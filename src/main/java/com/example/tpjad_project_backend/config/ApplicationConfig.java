@@ -1,6 +1,6 @@
 package com.example.tpjad_project_backend.config;
 
-import com.example.tpjad_project_backend.user.UserRepository;
+import com.example.tpjad_project_backend.auth.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

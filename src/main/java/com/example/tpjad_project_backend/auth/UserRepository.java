@@ -1,5 +1,6 @@
-package com.example.tpjad_project_backend.user;
+package com.example.tpjad_project_backend.auth;
 
+import com.example.tpjad_project_backend.model.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

@@ -1,4 +1,4 @@
-package com.example.tpjad_project_backend.user;
+package com.example.tpjad_project_backend.model.user;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

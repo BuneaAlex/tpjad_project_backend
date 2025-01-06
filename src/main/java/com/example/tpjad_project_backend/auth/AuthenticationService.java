@@ -1,9 +1,8 @@
 package com.example.tpjad_project_backend.auth;
 
 import com.example.tpjad_project_backend.config.JwtService;
-import com.example.tpjad_project_backend.user.Role;
-import com.example.tpjad_project_backend.user.User;
-import com.example.tpjad_project_backend.user.UserRepository;
+import com.example.tpjad_project_backend.model.user.Role;
+import com.example.tpjad_project_backend.model.user.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
