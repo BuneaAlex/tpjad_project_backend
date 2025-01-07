@@ -1,9 +1,10 @@
 package com.example.tpjad_project_backend.schedule;
 
 import com.example.tpjad_project_backend.model.timeslot.AlreadyBookedException;
+import com.example.tpjad_project_backend.model.timeslot.InvalidTimeslotException;
 import com.example.tpjad_project_backend.model.timeslot.Timeslot;
-import com.example.tpjad_project_backend.model.timeslot.TimeslotNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -16,8 +17,12 @@ public class ReservationService {
     @Autowired
     private TimeslotRepository timeslotRepository;
 
-    public Timeslot addTimeslot(Timeslot timeslot) throws AlreadyBookedException {
-        List<Timeslot> timeSlotsInInterval = timeslotRepository.findTimeslotConflicts(
+    public Timeslot addTimeslot(Timeslot timeslot) throws AlreadyBookedException, InvalidTimeslotException {
+        String errors = TimeslotValidator.validateTimeslot(timeslot);
+        if (!errors.isEmpty()) {
+            throw new InvalidTimeslotException(errors);
+        }
+        List<Timeslot> timeSlotsInInterval = timeslotRepository.findTimeslotsOverlapping(
                 timeslot.getMeeting().getRoom(),
                 timeslot.getDate(),
                 timeslot.getInterval().getStart().getHour(),
@@ -36,6 +41,8 @@ public class ReservationService {
             if (timeslot.getUserId().equals(requestingUser)) {
                 timeslotRepository.deleteById(uuid);
                 toBeDeleted.set(timeslot);
+            } else {
+                throw new AccessDeniedException("You don't have permission to delete this timeslot");
             }
         });
         if (toBeDeleted.get() != null) {

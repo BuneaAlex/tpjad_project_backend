@@ -30,7 +30,7 @@ public interface TimeslotRepository extends JpaRepository<Timeslot, String> {
         (t.interval.end.hour = :startHour AND t.interval.end.minutes > :startMinute))
     )
 """)
-    List<Timeslot> findTimeslotConflicts(
+    List<Timeslot> findTimeslotsOverlapping(
             @Param("room") String room,
             @Param("date") LocalDate date,
             @Param("startHour") int startHour,

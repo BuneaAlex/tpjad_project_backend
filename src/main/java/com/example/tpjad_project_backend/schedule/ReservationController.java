@@ -1,6 +1,7 @@
 package com.example.tpjad_project_backend.schedule;
 
 import com.example.tpjad_project_backend.model.timeslot.AlreadyBookedException;
+import com.example.tpjad_project_backend.model.timeslot.InvalidTimeslotException;
 import com.example.tpjad_project_backend.model.timeslot.Timeslot;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -49,6 +50,8 @@ public class ReservationController {
             return ResponseEntity.ok(reservationService.addTimeslot(timeslot));
         } catch (AlreadyBookedException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
+        } catch (InvalidTimeslotException e) {
+            return ResponseEntity.badRequest().body("Timeslot contains errors!\n" + e.getMessage());
         }
     }
 
