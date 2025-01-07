@@ -14,7 +14,7 @@ public interface TimeslotRepository extends JpaRepository<Timeslot, String> {
 
     List<Timeslot> findByDateBefore(LocalDate date);
 
-    List<Timeslot> findByDateAfter(LocalDate date);
+    List<Timeslot> findByDateGreaterThanEqual(LocalDate date);
 
     List<Timeslot> findAllByDate(LocalDate date);
 

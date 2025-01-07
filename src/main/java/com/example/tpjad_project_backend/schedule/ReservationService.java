@@ -52,7 +52,7 @@ public class ReservationService {
     }
 
     public List<Timeslot> getAllTimeslotsStartingFrom(LocalDate startingDate) {
-        return timeslotRepository.findByDateAfter(startingDate);
+        return timeslotRepository.findByDateGreaterThanEqual(startingDate);
     }
 
     public List<Timeslot> getAllTimeslotsEndingFrom(LocalDate endingDate) {
