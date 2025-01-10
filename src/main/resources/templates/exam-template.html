@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Exam Notification</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      background-color: #fff;
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      color: #333;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      margin-bottom: 10px;
+    }
+    .reminder-buttons {
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+    }
+    .reminder-input {
+      margin-right: 10px;
+      padding: 8px;
+      width: 60px;
+      text-align: center;
+      font-size: 14px;
+    }
+    .reminder-button {
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    .reminder-button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1 th:text="${emailDto.title}">Exam Title</h1>
+  <p>
+    You have an upcoming reservation scheduled. Please find the details below:
+  </p>
+  <ul>
+    <li>Start Date and Time: <span th:text="${emailDto.startDateTime}">[Start Date and Time]</span></li>
+    <li>End Date and Time: <span th:text="${emailDto.endDateTime}">[End Date and Time]</span></li>
+  </ul>
+  <p>
+    Good luck!
+  </p>
+</div>
+</body>
+</html>
