@@ -1,10 +1,7 @@
 package com.example.tpjad_project_backend.model.timeslot;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDate;
 import java.util.UUID;
@@ -15,6 +12,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @Entity
 @Table(name = "timeslot")
+@Builder(setterPrefix = "with")
 public class Timeslot {
 
     @Id
